@@ -1,0 +1,15 @@
+services:
+  studyhuppy-frontend:
+    container_name: studyhuppy-react-frontend
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "${PROD_HOST_PORT}:${PROD_CONTAINER_PORT}"
+    networks:
+      - internalnet
+    env_file:
+      - .env
+
+networks:
+  internalnet:
+    driver: bridge

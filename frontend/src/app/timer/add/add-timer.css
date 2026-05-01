@@ -1,0 +1,19 @@
+.error {
+    color: red;
+}
+
+#form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-timer-form{
+    width: 600px;
+}
+
+.alert {
+    width: 100%;
+    text-align: center;
+}

@@ -1,0 +1,17 @@
+.border-r {
+    border: 2px solid red;
+    padding: 1px;
+    margin: 1px;
+}
+
+.border-g {
+    border: 2px solid green;
+    padding: 1px;
+    margin: 1px;
+}
+
+.border-b {
+    border: 2px solid blue;
+    padding: 1px;
+    margin: 1px;
+}

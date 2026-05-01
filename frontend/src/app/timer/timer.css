@@ -1,0 +1,36 @@
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#fachsemester-ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fachsemester-ul-element {
+    width: 100%;
+}
+
+.fachsemester-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-link {
+    text-decoration: none;
+    color: rgb(45, 45, 45);;
+    font-weight: bold;
+    font-size: 30px;
+}

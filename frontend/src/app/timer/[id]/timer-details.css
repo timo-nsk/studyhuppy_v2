@@ -1,0 +1,14 @@
+#timer-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;}
+
+#details-container {
+    width: 50%;
+}
+
+#zeit-hinzufugen-form {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
