@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASS}
+    url: jdbc:postgresql://timer-db:5432/${TIMER_DB}
+server:
+  port: ${PROD_SERVER_PORT}

@@ -1,0 +1,25 @@
+services:
+  timer-db:
+    container_name: timer_db
+    image: postgres:latest
+    ports:
+      - "${TIMER_DB_HOST_PORT}:5432"
+    volumes:
+      - ./timer-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${TIMER_DB}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASS}
+    env_file:
+      - .env
+  timer-service:
+    container_name: timer-service
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      timer-db:
+        condition: service_healthy
+    ports:
+      - "${PROD_SERVER_PORT}:${PROD_SERVER_PORT}"
+    env_file:
+      - .env

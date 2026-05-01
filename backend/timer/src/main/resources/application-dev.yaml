@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASS}
+    url: jdbc:postgresql://localhost:${TIMER_DB_HOST_PORT}/${TIMER_DB}
+server:
+  port: ${DEV_SERVER_PORT}

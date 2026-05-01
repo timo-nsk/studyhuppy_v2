@@ -1,0 +1,8 @@
+.idea
+.mvn
+timer-data
+.gitattributes
+.gitignore
+mvnw
+mvnw.cmd
+.env
