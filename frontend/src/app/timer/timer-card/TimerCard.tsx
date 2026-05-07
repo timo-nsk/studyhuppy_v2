@@ -9,6 +9,8 @@ import {Timer} from "@/app/timer/Timer";
 
 export function TimerCard({id, titel, sekunden, aktiv} : Timer) {
 
+    const timerServicePort = process.env.NEXT_PUBLIC_TIMER_SERVICE_API_PORT
+
     const [isRunning, setIsRunning] = useState<boolean>(false);
 
     const [thisSeconds, setThisSeconds] = useState<number>(sekunden);
@@ -30,7 +32,7 @@ export function TimerCard({id, titel, sekunden, aktiv} : Timer) {
             clearInterval(intervalRef.current);
         }
 
-        await fetch("http://localhost:7761/api/v1/timers/" + id + "/sekunden/" + thisSeconds, {
+        await fetch(`http://localhost:${timerServicePort}/api/v1/timers/${id}/sekunden/${thisSeconds}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

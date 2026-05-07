@@ -10,6 +10,8 @@ import { useQueryClient } from "@tanstack/react-query";
 
 export default function TimerDetails() {
 
+    const timerServicePort = process.env.NEXT_PUBLIC_TIMER_SERVICE_API_PORT
+
     const params = useParams<{id: string}>();
 
     const router = useRouter();
@@ -26,7 +28,7 @@ export default function TimerDetails() {
         queryKey: ["timer", params.id],
         queryFn: async (): Promise<Timer> => {
             const res = await fetch(
-                `http://localhost:7661/api/v1/timers/${params.id}`
+                `http://localhost:${timerServicePort}/api/v1/timers/${params.id}`
             );
 
             if (!res.ok) {
