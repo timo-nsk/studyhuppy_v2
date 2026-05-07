@@ -1,5 +1,6 @@
 package com.studyhuppy.timer.application.service;
 
+import com.studyhuppy.timer.adapter.db.TimerBeendetEventRepository;
 import com.studyhuppy.timer.adapter.db.TimerRepository;
 import com.studyhuppy.timer.adapter.web.dto.TimerRequest;
 import com.studyhuppy.timer.domain.model.Timer;
@@ -16,12 +17,15 @@ public class TimerServiceTest {
 
 	TimerRepository timerRepository;
 
+	TimerBeendetEventRepository timerBeendetEventRepository;
+
 	TimerService timerService;
 
 	@BeforeEach
 	public void setUp() {
 		timerRepository = mock(TimerRepository.class);
-		timerService = new TimerService(timerRepository);
+		timerBeendetEventRepository = mock(TimerBeendetEventRepository.class);
+		timerService = new TimerService(timerRepository, timerBeendetEventRepository);
 	}
 
 	@Test
