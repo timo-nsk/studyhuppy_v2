@@ -1,7 +1,7 @@
 "use client";
 
 import {HeaderProps} from "./HeaderProps";
-import "../../../app/debug.css"
+import "../../../debug.css"
 import "./header.css"
 import Link from "next/link";
 import {usePathname} from "next/navigation";
