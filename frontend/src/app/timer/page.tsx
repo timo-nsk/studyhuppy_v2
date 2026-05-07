@@ -9,10 +9,12 @@ import Link from "next/link";
 
 export default function Timers() {
 
+    const timerServicePort = process.env.NEXT_PUBLIC_TIMER_SERVICE_API_PORT
+
     const { data, error, isPending } = useQuery({
         queryKey: ["timers"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:7761/api/v1/timers");
+            const res = await fetch(`http://localhost:${timerServicePort}/api/v1/timers`);
             return res.json();
         },
     });
