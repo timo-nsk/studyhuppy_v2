@@ -1,5 +1,3 @@
-import Timer from "@/app/timer/page";
-
 export default function Home() {
   return (
       <>
