@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(origins = {
-		"http://localhost:3000",
-		"http://localhost:7760"
+		"http://localhost:7760",
+		"http://localhost:7660"
 })
 @RestController
 @RequestMapping("/api/v1")
