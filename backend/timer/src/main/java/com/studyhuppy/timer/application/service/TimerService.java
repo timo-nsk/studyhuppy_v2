@@ -1,12 +1,15 @@
 package com.studyhuppy.timer.application.service;
 
+import com.studyhuppy.timer.adapter.db.TimerBeendetEventRepository;
 import com.studyhuppy.timer.adapter.db.TimerRepository;
 import com.studyhuppy.timer.adapter.web.dto.TimerRequest;
 import com.studyhuppy.timer.domain.model.Timer;
+import com.studyhuppy.timer.domain.model.TimerBeendetEvent;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +19,13 @@ public class TimerService {
 
 	private TimerRepository timerRepository;
 
-	public TimerService(TimerRepository timerRepository) {
+	private TimerBeendetEventRepository timerBeendetEventRepository;
+
+	public TimerService(
+			TimerRepository timerRepository,
+			TimerBeendetEventRepository timerBeendetEventRepository) {
 		this.timerRepository = timerRepository;
+		this.timerBeendetEventRepository = timerBeendetEventRepository;
 	}
 
 	public void save(Timer timer) {
@@ -39,7 +47,7 @@ public class TimerService {
 		return t.orElse(null);
 	}
 
-	public boolean sekundenAktualisieren(Long id, Integer sekunden) {
+	public boolean sekundenAktualisieren(Long id, Integer sekundenNeu) {
 		Timer t = timerRepository.findById(id).orElse(null);
 
 		if(t == null) {
@@ -47,10 +55,20 @@ public class TimerService {
 			return false;
 		}
 
-		t.setSekunden(sekunden);
+		Integer sekundenAlt = t.getSekunden();
+		Integer deltaSekunden = sekundenNeu - sekundenAlt;
+		TimerBeendetEvent beendetEvent = new TimerBeendetEvent(
+				null,
+				t.getId(),
+				LocalDateTime.now(),
+				deltaSekunden
+		);
+
+		t.setSekunden(sekundenNeu);
 
 		timerRepository.save(t);
-		log.info("Sekunden von Timer= " + id + "gesetzt auf " + sekunden);
+		timerBeendetEventRepository.save(beendetEvent);
+		log.info("Sekunden von Timer= " + id + "gesetzt auf " + sekundenNeu);
 		return true;
 	}
 
